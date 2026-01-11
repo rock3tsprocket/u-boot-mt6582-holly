@@ -9,9 +9,9 @@
   model = "Huawei Honor Holly/3C Lite (Hol-U19)";
 	compatible = "huawei,holly";
 
-	/*chosen {
-		tick-timer = &gpt;
-	};*/
+	chosen {
+		tick-timer = &timer;
+	};
 
 	memory {
 		#address-cells = <1>;
@@ -47,7 +47,7 @@
 		};
 	};*/
 	
-	/*reg_1p8v: regulator-1p8v {
+	reg_1p8v: regulator-1p8v {
 		compatible = "regulator-fixed";
 		regulator-name = "fixed-1.8V";
 		regulator-min-microvolt = <1800000>;
@@ -72,16 +72,16 @@
 		regulator-max-microvolt = <5000000>;
 		regulator-boot-on;
 		regulator-always-on;
-	};*/
+	};
 };
 
-/*&uart0 {
+&uart0 {
 	status = "okay";
 };
 
 &uart1 {
 	status = "okay";
-};*/
+};
 
 /*&pinctrl {
   mmc0_pins_default: mmc0default {
