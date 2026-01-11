@@ -1,5 +1,11 @@
 if ARCH_MEDIATEK
 
+config BOARD_HOLLY
+	bool "Huawei holly board"
+	select TARGET_MT6582
+	help
+	  Enable support for Huawei holly (phone) board based on MT6582 SoC
+
 config SYS_SOC
 	default "mediatek"
 
@@ -8,6 +14,13 @@ config SYS_VENDOR
 
 choice
 	prompt "MediaTek board select"
+
+config TARGET_MT6582
+	bool "MediaTek MT6582 SoC"
+	select CPU_V7A
+	help
+	  The MediaTek MT6582 is a ARM-based SoC with a quad-core Cortex-A7
+	  including NEON and Mali-400 MP2 graphics.
 
 config TARGET_MT7622
 	bool "MediaTek MT7622 SoC"
@@ -132,6 +145,7 @@ endchoice
 
 config SYS_BOARD
 	string "Board name"
+	default "holly"  if TARGET_MT6582
 	default "mt7622" if TARGET_MT7622
 	default "mt7623" if TARGET_MT7623
 	default "mt7629" if TARGET_MT7629
@@ -150,6 +164,7 @@ config SYS_BOARD
 	  be used.
 
 config SYS_CONFIG_NAME
+	default "holly"  if TARGET_HOLLY
 	default "mt7622" if TARGET_MT7622
 	default "mt7623" if TARGET_MT7623
 	default "mt7629" if TARGET_MT7629
@@ -167,7 +182,7 @@ config MTK_BROM_HEADER_INFO
 	string
 	default "media=nor" if TARGET_MT8518 || TARGET_MT8512 || TARGET_MT7629
 	default "media=emmc" if TARGET_MT8516 || TARGET_MT8365 || TARGET_MT8183 || TARGET_MT8188
-	default "lk=1" if TARGET_MT7623
+	default "lk=1" if TARGET_MT7623 || TARGET_MT6582
 
 config MTK_TZ_MOVABLE
 	select ARCH_MISC_INIT
