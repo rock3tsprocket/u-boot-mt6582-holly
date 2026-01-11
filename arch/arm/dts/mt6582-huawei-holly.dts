@@ -23,10 +23,10 @@
 	// use framebuffer set up by stock lk 
 	fb0: framebuffer@beb00000 {
 		compatible = "simple-framebuffer";
-		reg = <0xbeb00000 (640 * 360 * 2)>;
-		width = <360>;
-		height = <640>;
-		stride = <(360 * 2)>;
+		reg = <0xbeb00000 (1280 * 720 * 2)>;
+		width = <720>;
+		height = <1280>;
+		stride = <(720 * 2)>;
 		format = "r5g6b5";
 		status = "okay";
 	};
